@@ -1,0 +1,43 @@
+package by.it.dsmobile.core.model;
+
+import by.it.dsmobile.core.repository.converter.WeekdayByIdConverter;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name = "timetable")
+@Getter
+@Setter
+public class Timetable extends UpdatableEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "organization_id", nullable = false)
+    private Organization organization;
+
+    @ManyToOne
+    @JoinColumn(name = "group_id", nullable = false)
+    private Group group;
+
+    @Column(name = "weekday_id", columnDefinition = "int2")
+    @Convert(converter = WeekdayByIdConverter.class)
+    private Weekday weekday;
+
+    @ManyToOne
+    @JoinColumn(name = "timeslot_id", nullable = false)
+    private Timeslot timeslot;
+
+    @ManyToOne
+    @JoinColumn(name = "subject_id", nullable = false)
+    private Subject subject;
+
+    @ManyToOne
+    @JoinColumn(name = "teacher_id", nullable = false)
+    private User teacher;
+
+}
