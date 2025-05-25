@@ -24,7 +24,7 @@ public class Group extends UpdatableEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "mapping", nullable = false)
+    @Column(name = "mapping")
     private String mapping;
 
     @Column(name = "group_type", nullable = false)

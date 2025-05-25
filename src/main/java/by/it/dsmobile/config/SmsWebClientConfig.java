@@ -25,7 +25,6 @@ public class SmsWebClientConfig {
         this.baseUrl = properties.getBaseUrl();
     }
 
-
     @Bean
     public WebClient webClientWithTimeout() {
         final var factory = new DefaultUriBuilderFactory(baseUrl);

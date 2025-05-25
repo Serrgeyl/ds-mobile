@@ -2,7 +2,7 @@ package by.it.dsmobile.core.model;
 
 public enum GroupType {
 
-    CLASSES,
+    CLASS,
     PARENTS,
     TEACHERS,
     ADMINISTRATION

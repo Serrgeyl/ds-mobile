@@ -13,7 +13,7 @@ import static by.it.dsmobile.config.AppConstants.ZONE_ID;
 @Getter
 public class EventSummary {
 
-    @JsonFormat(pattern = "dd.MM.yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     private final Integer userId;

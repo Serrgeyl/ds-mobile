@@ -47,17 +47,8 @@ public class User extends UpdatableEntity {
     @Column(name = "version")
     private Integer version;
 
-    @Column(name = "access_admin")
-    private Boolean accessAdmin;
-
-    @Column(name = "mobile_access")
-    private Boolean mobileAccess;
-
     @Column(name = "note")
     private String note;
-
-    @Column(name = "active")
-    private Boolean active;
 
     @ManyToMany
     @JoinTable(name= "groups_users",

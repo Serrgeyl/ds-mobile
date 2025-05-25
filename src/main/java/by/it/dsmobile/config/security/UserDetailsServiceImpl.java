@@ -20,8 +20,20 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(final String phone) throws UsernameNotFoundException {
         final var user = userRepository
-                .findByPhoneNumberAndSecurityCodeExpirationDateIsAfter(phone, OffsetDateTime.now())
+                .findByPhoneNumberAndSecurityCodeExpirationDateIsAfter(phone.trim(), OffsetDateTime.now())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found or secure code expired [phone number = %s]".formatted(phone)));
+
+        return new User(
+                user.getPhoneNumber(),
+                user.getSecurityCode(),
+                List.of()
+        );
+    }
+
+    public UserDetails findUserByUsername(final String phone) throws UsernameNotFoundException {
+        final var user = userRepository
+                .findByPhoneNumber(phone.trim())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found [phone number = %s]".formatted(phone)));
 
         return new User(
                 user.getPhoneNumber(),
