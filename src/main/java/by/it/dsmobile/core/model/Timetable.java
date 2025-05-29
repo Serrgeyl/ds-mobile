@@ -5,10 +5,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Table(name = "timetable")
 @Getter
 @Setter
+@Entity
+@Table(name = "timetable")
 public class Timetable extends UpdatableEntity {
 
     @Id
