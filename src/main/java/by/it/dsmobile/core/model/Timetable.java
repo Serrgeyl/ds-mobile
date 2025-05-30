@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import static by.it.dsmobile.config.AppConstants.ENUM_ID_TYPE;
+
 @Getter
 @Setter
 @Entity
@@ -24,7 +26,7 @@ public class Timetable extends UpdatableEntity {
     @JoinColumn(name = "group_id", nullable = false)
     private Group group;
 
-    @Column(name = "weekday_id", columnDefinition = "int2")
+    @Column(name = "weekday_id", columnDefinition = ENUM_ID_TYPE)
     @Convert(converter = WeekdayByIdConverter.class)
     private Weekday weekday;
 
