@@ -1,7 +1,7 @@
 package by.it.dsmobile.api.dto.response;
 
+import by.it.dsmobile.core.model.EventEntryType;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import by.it.dsmobile.core.model.PassType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +11,7 @@ import java.time.LocalTime;
 @Setter
 public class EventDetailsResponse {
 
-    PassType passType;
+    EventEntryType passType; // TODO naming...
 
     @JsonFormat(pattern = "HH:mm")
     private LocalTime time;
