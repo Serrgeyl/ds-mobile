@@ -1,19 +1,17 @@
 package by.it.dsmobile.core.model;
 
+import by.it.dsmobile.core.repository.converter.parameter.IdParameter;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-public enum PassType {
+@AllArgsConstructor
+public enum PassType implements IdParameter {
 
     IN(1, "Вход"),
     OUT(2, "Выход");
 
-    public final int id;
+    public final Integer id;
     public final String name;
-
-    PassType(final int id, final String name) {
-        this.id = id;
-        this.name = name;
-    }
 
 }
