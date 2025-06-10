@@ -30,9 +30,8 @@ public class EventController {
             @RequestParam("ids") final List<Integer> ids,
             @RequestParam("page") final int page,
             @RequestParam("size") final int size
-
     ) {
-        return eventService.retrieveEventsSummary(ids, size, page);
+        return eventService.retrieveEventsSummary(ids, page, size);
     }
 
     @GetMapping(value = "/details")

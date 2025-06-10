@@ -20,7 +20,8 @@ import static by.it.dsmobile.config.AppConstants.ENUM_ID_TYPE;
                 "max(case when e.event_entry_type_id = 2 then e.fired_at end) as outTime, " +
                 "count(e.id) as count " +
                 "from event e " +
-                "where e.user_id in :ids " +
+                "where e.user_id in :ids and " +
+                "e.fired_at >= :startDate " +
                 "group by date, userId " +
                 "order by date desc " +
                 "limit :limit offset :offset",

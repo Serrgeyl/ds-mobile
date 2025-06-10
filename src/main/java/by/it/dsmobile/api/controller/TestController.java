@@ -3,10 +3,9 @@ package by.it.dsmobile.api.controller;
 import by.it.dsmobile.api.dto.request.TestSms;
 import by.it.dsmobile.core.service.SmsService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/test")
@@ -23,6 +22,12 @@ public class TestController {
         } catch (Exception e) {
             return e.getMessage();
         }
+    }
+
+    @GetMapping("/date")
+    public boolean isBefore(final @RequestParam LocalDate date) {
+        final var start = LocalDate.parse("2025-09-01");
+        return date.isBefore(start);
     }
 
 }
