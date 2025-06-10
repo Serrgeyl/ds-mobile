@@ -12,7 +12,7 @@ import java.util.List;
 public interface EventRepository extends JpaRepository<Event, Long> {
 
     @Query(name = "events_summary_query", nativeQuery = true)
-    List<EventSummary> retrieveEventsSummary(@Param("ids") List<Integer> ids);
+    List<EventSummary> retrieveEventsSummary(@Param("ids") List<Integer> ids, @Param("limit") int limit, @Param("offset") int offset);
 
     List<Event> findAllByUserIdAndFiredAtBetween(Integer userId, OffsetDateTime start, OffsetDateTime end);
 

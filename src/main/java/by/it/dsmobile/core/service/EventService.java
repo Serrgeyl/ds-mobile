@@ -20,8 +20,8 @@ public class EventService {
 
     private final EventRepository eventRepository;
 
-    public List<EventSummary> retrieveEventsSummary(final List<Integer> ids) {
-        return eventRepository.retrieveEventsSummary(ids);
+    public List<EventSummary> retrieveEventsSummary(final List<Integer> ids, final int limit, final int offset) {
+        return eventRepository.retrieveEventsSummary(ids, limit, offset);
     }
 
     public List<EventDetailsResponse> retrieveEventsDetails(final EventDetailsRequest eventDetails) {

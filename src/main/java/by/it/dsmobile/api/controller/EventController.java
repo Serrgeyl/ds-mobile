@@ -26,8 +26,13 @@ public class EventController {
 
     @GetMapping(value = "/summary")
     @Operation(summary = "Получение сгруппированных по дням событий")
-    public List<EventSummary> getSummary(@RequestParam("ids") final List<Integer> ids) {
-        return eventService.retrieveEventsSummary(ids);
+    public List<EventSummary> getSummary(
+            @RequestParam("ids") final List<Integer> ids,
+            @RequestParam("page") final int page,
+            @RequestParam("size") final int size
+
+    ) {
+        return eventService.retrieveEventsSummary(ids, size, page);
     }
 
     @GetMapping(value = "/details")

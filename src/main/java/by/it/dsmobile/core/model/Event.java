@@ -22,7 +22,8 @@ import static by.it.dsmobile.config.AppConstants.ENUM_ID_TYPE;
                 "from event e " +
                 "where e.user_id in :ids " +
                 "group by date, userId " +
-                "order by date desc",
+                "order by date desc " +
+                "limit :limit offset :offset",
         resultSetMapping = "event_summary_dto"
 )
 @SqlResultSetMapping(
