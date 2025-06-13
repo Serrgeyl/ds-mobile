@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -43,6 +44,7 @@ public class UserService {
                 .stream()
                 .filter(s -> !s.getService().getDisposable())
                 .map(relatedUserMapper::toRelatedUser)
+                .sorted(Comparator.comparingInt(RelatedUser::getId))
                 .toList();
     }
 
