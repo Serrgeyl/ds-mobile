@@ -6,7 +6,7 @@ import lombok.Setter;
 
 import java.util.List;
 
-import static by.it.dsmobile.config.AppConstants.SHORT_TYPE;
+import static by.it.dsmobile.core.util.AppConstants.SHORT_TYPE;
 
 @Entity
 @Getter
@@ -19,20 +19,23 @@ public class Service extends UpdatableEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "disposable")
+    @Column(name = "price", nullable = false)
+    private Long price;
+
+    @Column(name = "disposable", nullable = false)
     private Boolean disposable;
 
-    @Column(name = "sms_notify")
+    @Column(name = "sms_notify", nullable = false)
     private Boolean smsNotify;
 
-    @Column(name = "push_notify")
+    @Column(name = "push_notify", nullable = false)
     private Boolean pushNotify;
 
-    @Column(name = "active")
-    private Boolean active;
+    @Column(name = "active", nullable = false)
+    private Boolean active = true;
 
     @ManyToMany(mappedBy = "services")
     private List<User> users;

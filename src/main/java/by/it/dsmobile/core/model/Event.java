@@ -10,7 +10,7 @@ import lombok.Setter;
 import java.time.OffsetDateTime;
 import java.util.Date;
 
-import static by.it.dsmobile.config.AppConstants.ENUM_ID_TYPE;
+import static by.it.dsmobile.core.util.AppConstants.ENUM_ID_TYPE;
 
 @NamedNativeQuery(
         name = "events_summary_query",

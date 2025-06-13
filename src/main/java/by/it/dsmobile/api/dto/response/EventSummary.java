@@ -8,7 +8,7 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-import static by.it.dsmobile.config.AppConstants.ZONE_ID;
+import static by.it.dsmobile.core.util.AppConstants.ZONE_ID;
 
 @Getter
 public class EventSummary {

@@ -5,8 +5,8 @@ import lombok.Getter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
-import static by.it.dsmobile.config.AppConstants.JSONB_TYPE;
-import static by.it.dsmobile.config.AppConstants.SHORT_TYPE;
+import static by.it.dsmobile.core.util.AppConstants.JSONB_TYPE;
+import static by.it.dsmobile.core.util.AppConstants.SHORT_TYPE;
 
 @Getter
 @Entity

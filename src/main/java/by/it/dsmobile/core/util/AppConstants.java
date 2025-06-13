@@ -1,4 +1,4 @@
-package by.it.dsmobile.config;
+package by.it.dsmobile.core.util;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

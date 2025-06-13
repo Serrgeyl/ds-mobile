@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import static by.it.dsmobile.config.AppConstants.SHORT_TYPE;
+import static by.it.dsmobile.core.util.AppConstants.SHORT_TYPE;
 
 @Getter
 @Setter

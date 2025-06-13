@@ -9,5 +9,6 @@ public class ServiceResponse {
 
     private Integer id;
     private String name;
+    private Double price;
 
 }

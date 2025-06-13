@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.security.SecureRandom;
 import java.time.OffsetDateTime;
 
-import static by.it.dsmobile.config.AppConstants.SECURITY_CODE_EXPIRATION_TIME;
+import static by.it.dsmobile.core.util.AppConstants.SECURITY_CODE_EXPIRATION_TIME;
 
 @Service
 @AllArgsConstructor
