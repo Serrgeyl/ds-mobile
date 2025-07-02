@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TimetableSearchCriteria {
+public class TimetableTeacherSearchCriteria {
 
     @NotNull
     private Integer organizationId;
@@ -15,6 +15,6 @@ public class TimetableSearchCriteria {
     private Integer weekdayId;
 
     @NotNull
-    private Integer groupId;
+    private Integer teacherId;
 
 }

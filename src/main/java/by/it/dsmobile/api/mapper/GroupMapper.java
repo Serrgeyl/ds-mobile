@@ -1,6 +1,7 @@
 package by.it.dsmobile.api.mapper;
 
 import by.it.dsmobile.api.dto.response.GroupResponse;
+import by.it.dsmobile.api.dto.response.RelatedGroup;
 import by.it.dsmobile.core.model.Group;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -28,6 +29,18 @@ public class GroupMapper {
         }
 
         return groupResponse;
+    }
+
+    public RelatedGroup toRelatedGroup(Group group) {
+        if (group == null) {
+            return null;
+        }
+
+        RelatedGroup relatedGroup = new RelatedGroup();
+        relatedGroup.setId(group.getId());
+        relatedGroup.setName(group.getName());
+        relatedGroup.setMapping(group.getMapping());
+        return relatedGroup;
     }
 
 }

@@ -1,7 +1,9 @@
 package by.it.dsmobile.api.controller;
 
 import by.it.dsmobile.api.dto.request.TimetableSearchCriteria;
+import by.it.dsmobile.api.dto.request.TimetableTeacherSearchCriteria;
 import by.it.dsmobile.api.dto.response.TimetableResponse;
+import by.it.dsmobile.api.dto.response.TimetableTeacherResponse;
 import by.it.dsmobile.core.service.TimetableService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -23,6 +25,11 @@ public class TimetableController {
     @GetMapping
     public List<TimetableResponse> getTimetable(@Valid @NotNull final TimetableSearchCriteria searchCriteria) {
         return timetableService.getTimetable(searchCriteria);
+    }
+
+    @GetMapping("/teacher")
+    public List<TimetableTeacherResponse> getTeacherTimetable(@Valid @NotNull final TimetableTeacherSearchCriteria searchCriteria) {
+        return timetableService.getTeacherTimetable(searchCriteria);
     }
 
 }

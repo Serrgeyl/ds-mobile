@@ -24,15 +24,9 @@ public class Group extends UpdatableEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "mapping")
-    private String mapping;
-
     @Column(name = "group_type", nullable = false)
     @Enumerated(EnumType.STRING)
     private GroupType groupType;
-
-    @Column(name = "note")
-    private String note;
 
     @ManyToOne
     @JoinColumn(name = "organization_id", nullable = false)
@@ -41,6 +35,16 @@ public class Group extends UpdatableEntity {
     @ManyToOne
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
+
+    @Column(name = "mapping")
+    private String mapping;
+
+    @ManyToOne
+    @JoinColumn(name = "class_teacher_id")
+    private User classTeacher;
+
+    @Column(name = "note")
+    private String note;
 
     @ManyToMany
     @JoinTable(name= "groups_users",
