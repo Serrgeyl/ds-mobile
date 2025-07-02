@@ -20,6 +20,12 @@ public interface EventRepository extends JpaRepository<Event, Long> {
             @Param("offset") int offset
     );
 
+    @Query(
+            value = "select count(*) from(select date(fired_at) from event where user_id = :id and fired_at >= :startDate group by date(fired_at)) as subselect",
+            nativeQuery = true
+    )
+    int getEventsSummaryCount(@Param("id") int id, @Param("startDate") LocalDate startDate);
+
     List<Event> findAllByUserIdAndFiredAtBetween(Integer userId, OffsetDateTime start, OffsetDateTime end);
 
 }

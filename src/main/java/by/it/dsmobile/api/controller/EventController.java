@@ -34,6 +34,12 @@ public class EventController {
         return eventService.retrieveEventsSummary(ids, page, size);
     }
 
+    @GetMapping(value = "/summary/count")
+    @Operation(summary = "Получение количества сгруппированных элементов")
+    public int getSummaryCount(@RequestParam("id") final int id) {
+        return eventService.getEventsSummaryCount(id);
+    }
+
     @GetMapping(value = "/details")
     @Operation(summary = "Получение событий за указанную дату")
     public List<EventDetailsResponse> getEvents(@Valid @NotNull final EventDetailsRequest eventDetails) {

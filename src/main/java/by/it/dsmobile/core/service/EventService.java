@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Comparator;
 import java.util.List;
 
 import static by.it.dsmobile.core.util.AppConstants.ZONE_ID;
@@ -35,8 +36,14 @@ public class EventService {
         return eventRepository
                 .findAllByUserIdAndFiredAtBetween(eventDetails.getUserId(), start, end)
                 .stream()
+                .sorted(Comparator.comparing(Event::getEventEntryType).thenComparing(Event::getFiredAt))
                 .map(this::toEventDetailsResponse)
                 .toList();
+    }
+
+    public int getEventsSummaryCount(final int id) {
+        final var startDate = getStartDate();
+        return eventRepository.getEventsSummaryCount(id, startDate);
     }
 
     private EventDetailsResponse toEventDetailsResponse(final Event event) {
