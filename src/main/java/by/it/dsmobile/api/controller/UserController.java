@@ -1,6 +1,6 @@
 package by.it.dsmobile.api.controller;
 
-import by.it.dsmobile.api.dto.response.RelatedGroup;
+import by.it.dsmobile.api.dto.response.TeacherAdditionalData;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import by.it.dsmobile.api.dto.response.RelatedUser;
@@ -31,10 +31,10 @@ public class UserController {
         return userService.getBalanceById(id);
     }
 
-    @GetMapping(value = "/{id}/related-groups")
-    @Operation(summary = "Получение связанных групп (классов)")
-    public List<RelatedGroup> getRelatedGroups(@PathVariable final Integer id) {
-        return userService.getRelatedGroups(id);
+    @GetMapping(value = "/{id}/teacher-data")
+    @Operation(summary = "Получение дополнительных учительских данных")
+    public TeacherAdditionalData getTeacherAdditionalData(@PathVariable final Integer id) {
+        return userService.getTeacherAdditionalData(id);
     }
 
 }

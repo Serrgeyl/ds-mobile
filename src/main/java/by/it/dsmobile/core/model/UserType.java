@@ -5,6 +5,6 @@ public enum UserType {
     PUPIL,
     PARENT,
     TEACHER,
-    ADMIN
+    ADMINISTRATION
 
 }

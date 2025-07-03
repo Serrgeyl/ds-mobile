@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RelatedGroup {
+public class GroupBriefResponse {
 
     private Integer id;
     private String name;
