@@ -2,27 +2,14 @@ package by.it.dsmobile.api.mapper;
 
 import by.it.dsmobile.api.dto.response.OrganizationResponse;
 import by.it.dsmobile.core.model.Organization;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
 
-@Component
-public class OrganizationMapper {
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
+public interface OrganizationMapper {
 
-    public OrganizationResponse toOrganizationResponse(Organization organization) {
-        if (organization == null) {
-            return null;
-        }
-
-        final var organizationResponse = new OrganizationResponse();
-
-        organizationResponse.setId(organization.getId());
-        organizationResponse.setName(organization.getName());
-
-        final var city = organization.getCity();
-        if (city != null) {
-            organizationResponse.setCity(city.getName());
-        }
-
-        return organizationResponse;
-    }
+    @Mapping(target = "city", source = "organization.city.name")
+    OrganizationResponse toOrganizationResponse(Organization organization);
 
 }

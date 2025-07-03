@@ -5,8 +5,9 @@ import by.it.dsmobile.api.dto.response.TimetableTeacherResponse;
 import by.it.dsmobile.core.model.Timetable;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface TimetableMapper {
 
     @Mapping(target = "number", source = "timetable.timeslot.lessonNumber")

@@ -1,10 +1,7 @@
 package by.it.dsmobile.core.service;
 
 import by.it.dsmobile.api.dto.response.*;
-import by.it.dsmobile.api.mapper.GroupMapper;
-import by.it.dsmobile.api.mapper.OrganizationMapper;
-import by.it.dsmobile.api.mapper.RelatedUserMapper;
-import by.it.dsmobile.api.mapper.UserMapper;
+import by.it.dsmobile.api.mapper.*;
 import by.it.dsmobile.core.exception.ValueNotFoundException;
 import by.it.dsmobile.core.model.Group;
 import by.it.dsmobile.core.model.GroupType;
