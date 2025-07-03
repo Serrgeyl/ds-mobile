@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.security.SecureRandom;
 import java.time.OffsetDateTime;
+import java.util.List;
 
 import static by.it.dsmobile.core.util.AppConstants.SECURITY_CODE_EXPIRATION_TIME;
 
@@ -22,6 +23,13 @@ import static by.it.dsmobile.core.util.AppConstants.SECURITY_CODE_EXPIRATION_TIM
 public class AuthService {
 
     private static final SecureRandom RANDOM = new SecureRandom();
+    private static final String SECURE_CODE_MESSAGE_TEMPLATE = "Ваш проверочный код: ";
+    private static final List<String> testPhones = List.of(
+            "375009999999",
+            "375221234567",
+            "375221234568",
+            "375221234569"
+    );
 
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
@@ -29,15 +37,19 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final PushTokenService pushTokenService;
     private final UserLoginMapper userLoginMapper;
+    private final SmsService smsService;
 
     @Transactional
-    public String verify(final String phoneNumber) {
+    public void verify(final String phoneNumber) {
+        if (testPhones.contains(phoneNumber)) {
+            return;
+        }
         final var user = userService.findByPhoneNumber(phoneNumber.trim());
         final var code = createSecureCode();
         user.setSecurityCode(passwordEncoder.encode(code));
         user.setSecurityCodeExpirationDate(OffsetDateTime.now().plusMinutes(SECURITY_CODE_EXPIRATION_TIME));
         userService.saveAndFlush(user);
-        return code;
+        smsService.send(phoneNumber, SECURE_CODE_MESSAGE_TEMPLATE + code);
     }
 
     @Transactional
