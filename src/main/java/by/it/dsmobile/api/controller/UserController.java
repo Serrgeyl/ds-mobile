@@ -1,5 +1,6 @@
 package by.it.dsmobile.api.controller;
 
+import by.it.dsmobile.api.dto.response.AdministrationAdditionalData;
 import by.it.dsmobile.api.dto.response.TeacherAdditionalData;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -37,4 +38,9 @@ public class UserController {
         return userService.getTeacherAdditionalData(id);
     }
 
+    @GetMapping(value = "/{id}/administration-data")
+    @Operation(summary = "Получение дополнительных данных для администрации")
+    public AdministrationAdditionalData getAdministrationAdditionalData(@PathVariable final Integer id) {
+        return userService.getAdministrationAdditionalData(id);
+    }
 }

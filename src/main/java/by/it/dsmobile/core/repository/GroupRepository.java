@@ -11,4 +11,6 @@ public interface GroupRepository extends JpaRepository<Group, Integer> {
 
     List<Group> findByUsers_Id(Integer userId);
 
+    List<Group> findAllByOrganization_Id(Integer id);
+
 }

@@ -2,7 +2,7 @@ package by.it.dsmobile.core.service;
 
 import by.it.dsmobile.api.dto.request.LoginRequest;
 import by.it.dsmobile.api.dto.response.LoginResponse;
-import by.it.dsmobile.api.mapper.UserLoginMapper;
+import by.it.dsmobile.api.mapper.UserMapper;
 import by.it.dsmobile.config.security.JwtProvider;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -36,7 +36,7 @@ public class AuthService {
     private final JwtProvider jwtProvider;
     private final AuthenticationManager authenticationManager;
     private final PushTokenService pushTokenService;
-    private final UserLoginMapper userLoginMapper;
+    private final UserMapper userMapper;
     private final SmsService smsService;
 
     @Transactional
@@ -60,7 +60,7 @@ public class AuthService {
         final var user = userService.findByPhoneNumber(loginRequest.getPhoneNumber().trim());
         pushTokenService.save(user, loginRequest.getPushToken(), loginRequest.getPlatform());
 
-        final var userLogin = userLoginMapper.toUserLogin(user);
+        final var userLogin = userMapper.toUserLogin(user);
         final var accessToken = jwtProvider.generateToken(((UserDetails) authenticate.getPrincipal()).getUsername());
         return new LoginResponse(userLogin, accessToken);
     }

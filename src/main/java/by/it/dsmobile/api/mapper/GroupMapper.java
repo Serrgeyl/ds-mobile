@@ -1,46 +1,18 @@
 package by.it.dsmobile.api.mapper;
 
-import by.it.dsmobile.api.dto.response.GroupResponse;
 import by.it.dsmobile.api.dto.response.GroupBriefResponse;
+import by.it.dsmobile.api.dto.response.GroupResponse;
 import by.it.dsmobile.core.model.Group;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
 
-@Component
-@AllArgsConstructor
-public class GroupMapper {
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING, uses = {OrganizationMapper.class})
+public interface GroupMapper {
 
-    private final OrganizationMapper organizationMapper;
+    @Mapping(target = "type", source = "groupType")
+    GroupResponse toGroupResponse(Group group);
 
-    GroupResponse toGroupResponse(Group group) {
-        if (group == null) {
-            return null;
-        }
-
-        GroupResponse groupResponse = new GroupResponse();
-        groupResponse.setId(group.getId());
-        groupResponse.setName(group.getName());
-        groupResponse.setMapping(group.getMapping());
-        groupResponse.setType(group.getGroupType());
-
-        final var organization = group.getOrganization();
-        if (organization != null) {
-            groupResponse.setOrganization(organizationMapper.toOrganizationResponse(organization));
-        }
-
-        return groupResponse;
-    }
-
-    public GroupBriefResponse toRelatedGroup(Group group) {
-        if (group == null) {
-            return null;
-        }
-
-        GroupBriefResponse groupBriefResponse = new GroupBriefResponse();
-        groupBriefResponse.setId(group.getId());
-        groupBriefResponse.setName(group.getName());
-        groupBriefResponse.setMapping(group.getMapping());
-        return groupBriefResponse;
-    }
+    GroupBriefResponse toGroupBriefResponse(Group group);
 
 }
