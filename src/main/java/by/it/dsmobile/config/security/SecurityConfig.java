@@ -70,7 +70,7 @@ public class SecurityConfig {
                     configurer.configurationSource(configurationSource);
                 })
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/v1/auth/**", "/test/**").permitAll()
+                        .requestMatchers("/v1/auth/**", "/v1/test/**").permitAll()
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs*/**").permitAll()
                         .requestMatchers("/error").permitAll()
                         .anyRequest().authenticated())

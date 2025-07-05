@@ -455,13 +455,16 @@ values ('Иван', 'Иванович', 'Иванов', '375293242289', 'PARENT'
        ('Наталья', 'Викторовна', 'Стрикова', '375201234567', 'TEACHER', 0.00, 0, '2025-04-05 10:00:00.097000 +00:00', '2025-04-05 10:00:00.097000 +00:00', 'Сергей Л', 'Сергей Л'),
 
        ('Иван', 'Иванович', 'Иванов', '375298985609', 'PARENT', 0.00, 0, '2025-04-05 10:00:00.097000 +00:00', '2025-04-05 10:00:00.097000 +00:00', 'Сергей Л', 'Сергей Л'),
-       ('Иван', 'Иванович', 'Иванов', '375009999999', 'PARENT', 0.00, 0, '2025-04-05 10:00:00.097000 +00:00', '2025-04-05 10:00:00.097000 +00:00', 'Сергей Л', 'Сергей Л');
+       ('Иван', 'Иванович', 'Иванов', '375009999999', 'PARENT', 0.00, 0, '2025-04-05 10:00:00.097000 +00:00', '2025-04-05 10:00:00.097000 +00:00', 'Сергей Л', 'Сергей Л'),
+
+       ('Директор', 'Директорович', 'Грозный', '375221234560', 'ADMINISTRATION', 0.00, 0, '2025-04-05 10:00:00.097000 +00:00', '2025-04-05 10:00:00.097000 +00:00', 'Сергей Л', 'Сергей Л');
 
 
 update users set security_code = '$2a$10$dkE5tDzhOc2O2w7LFbWYu.cLXClwSgeMX2sE.r3nUI.SV1cmxXjru', security_code_expiration_date = '2100-01-01 10:00:00.000000 +00:00' where id = 16;
 update users set security_code = '$2a$10$Zyc3z4zzYgFkUTeaDeySf.bSRe8GuqgqQO0h.7JEM/XLeq6NH2sh6', security_code_expiration_date = '2100-01-01 10:00:00.000000 +00:00' where id = 6;
 update users set security_code = '$2a$10$IRArts470P.StPp1iACjb.GENaJ7kfnAkjLzGCtIxraZ8kgJwrCzK', security_code_expiration_date = '2100-01-01 10:00:00.000000 +00:00' where id = 7;
 update users set security_code = '$2a$10$IJRMN7.XhE6D7m3hbm1ZF.fabUa7AzJGw09n3g2ygWS7rddJBzqI6', security_code_expiration_date = '2100-01-01 10:00:00.000000 +00:00' where id = 8;
+update users set security_code = '$2a$10$AWaX0U.34MW/G2DNKvOfdehGiAxIApmUCP6.Q2hYkdsdADMCw8Nsi', security_code_expiration_date = '2100-01-01 10:00:00.000000 +00:00' where id = 17;
 
 
 insert into groups (name, mapping, class_teacher_id, group_type, organization_id, city_id, created_at, updated_at, created_by, updated_by)
@@ -478,6 +481,8 @@ values ('2023-А', '2А', 6, 'CLASS', 1, 1, '2025-04-05 10:00:00.097000 +00:00',
        ('Сотрудники', null, null, 'TEACHERS', 1, 1, '2025-04-05 10:00:00.097000 +00:00', '2025-04-05 10:00:00.097000 +00:00',
         'Сергей Л', 'Сергей Л'),
        ('Сотрудники', null, null, 'TEACHERS', 2, 1, '2025-04-05 10:00:00.097000 +00:00', '2025-04-05 10:00:00.097000 +00:00',
+        'Сергей Л', 'Сергей Л'),
+       ('Администрация', null, null, 'ADMINISTRATION', 1, 1, '2025-04-05 10:00:00.097000 +00:00', '2025-04-05 10:00:00.097000 +00:00',
         'Сергей Л', 'Сергей Л');
 
 
@@ -497,7 +502,8 @@ values (2, 1),
        (13, 7),
        (14, 7),
        (15, 4),
-       (16, 4);
+       (16, 4),
+       (17, 8);
 
 
 insert into service (name, price, disposable, sms_notify, push_notify, created_at, updated_at, created_by, updated_by)
