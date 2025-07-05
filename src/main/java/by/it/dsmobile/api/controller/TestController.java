@@ -2,21 +2,14 @@ package by.it.dsmobile.api.controller;
 
 import by.it.dsmobile.api.dto.request.TestSms;
 import by.it.dsmobile.core.service.SmsService;
-import lombok.AllArgsConstructor;
-import net.coobird.thumbnailator.Thumbnails;
-import openize.heic.decoder.HeicImage;
-import openize.heic.decoder.HeicImageFrame;
-import openize.heic.decoder.PixelFormat;
-import openize.io.IOFileStream;
-import openize.io.IOMode;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
@@ -28,7 +21,8 @@ import static java.nio.file.StandardOpenOption.CREATE_NEW;
 
 @RestController
 @RequestMapping("/v1/test")
-@AllArgsConstructor
+@RequiredArgsConstructor
+@Slf4j
 public class TestController {
 
     private final SmsService smsService;
@@ -58,16 +52,23 @@ public class TestController {
         return passwordEncoder.encode(code);
     }
 
-    @PostMapping("/image")
-    public void image(final @RequestBody MultipartFile image) throws IOException {
-        Path path = Paths.get(imagePath, image.getOriginalFilename());
+    @GetMapping("/ok")
+    public String ok() {
+        return "Ok";
+    }
 
+    @PostMapping("/image")
+    public void image(final @RequestBody MultipartFile image) {
+        Path path = Paths.get(imagePath, image.getOriginalFilename());
+        log.info(path.toString());
         try {
             Files.write(path, image.getBytes(), CREATE_NEW);
         } catch (FileAlreadyExistsException e) {
-            System.out.println("Image already exists");
+//            System.out.println("Image already exists");
+            log.info("Image already exists");
         } catch (IOException e) {
-            System.out.println("Failed to store image");
+//            System.out.println("Failed to store image");
+            log.info("Failed to store image");
         }
 
 //        final var input = new File("/Users/slem/IMG_6257.jpg");
