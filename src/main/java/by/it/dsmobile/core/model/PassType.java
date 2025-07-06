@@ -8,8 +8,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum PassType implements IdParameter {
 
-    IN(1, "Вход"),
-    OUT(2, "Выход");
+    EM_MARINE(1, "em-marine"),
+    MIFARE(2, "mifare");
 
     public final Integer id;
     public final String name;

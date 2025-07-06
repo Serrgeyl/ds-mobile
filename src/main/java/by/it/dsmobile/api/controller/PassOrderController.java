@@ -24,7 +24,7 @@ public class PassOrderController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Запрос на выпуск нового пропуска")
-    public void create(@Valid @NotNull final PassOrderRequest passOrderRequest) {
+    public void create(@Valid @NotNull @RequestBody final PassOrderRequest passOrderRequest) {
         passOrderService.create(passOrderRequest);
     }
 

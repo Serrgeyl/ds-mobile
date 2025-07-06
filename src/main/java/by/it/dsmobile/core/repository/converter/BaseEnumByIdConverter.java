@@ -17,7 +17,9 @@ public class BaseEnumByIdConverter<T extends Enum<T> & IdParameter> implements A
 
     @Override
     public Integer convertToDatabaseColumn(final T enumType) {
-        return enumType.getId();
+        return enumType == null
+                ? null
+                : enumType.getId();
     }
 
     @Override

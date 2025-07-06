@@ -17,8 +17,8 @@ public class PassOrderRequest {
     @NotNull
     private Integer organizationId;
 
-    private Integer groupId;  // optional
+    private Integer serviceId;
 
-    private Integer serviceId; // optional
+    private Integer groupId;
 
 }
