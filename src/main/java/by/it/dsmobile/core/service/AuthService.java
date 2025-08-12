@@ -28,7 +28,8 @@ public class AuthService {
             "375009999999",
             "375221234567",
             "375221234568",
-            "375221234569"
+            "375221234569",
+            "375221234560"
     );
 
     private final UserService userService;

@@ -10,6 +10,6 @@ import java.util.List;
 public class AdministrationAdditionalData {
 
     private List<UserBriefResponse> teachers;
-    private List<GroupBriefResponse> groups;
+    private List<GroupResponse> groups;
 
 }

@@ -109,7 +109,7 @@ public class UserService {
                 .findAllByOrganization_Id(organizationId)
                 .stream()
                 .filter(group -> group.getGroupType() == GroupType.CLASS)
-                .map(groupMapper::toGroupBriefResponse)
+                .map(groupMapper::toGroupResponse)
                 .toList();
 
         final var administrationAdditionalData = new AdministrationAdditionalData();
