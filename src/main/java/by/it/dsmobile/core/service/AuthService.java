@@ -45,7 +45,12 @@ public class AuthService {
         if (testPhones.contains(phoneNumber)) {
             return;
         }
-        final var user = userService.findByPhoneNumber(phoneNumber.trim());
+
+        if (phoneNumber.equals("375293242289")) {
+            smsService.send(phoneNumber, "Кто-то пытается зайти в мобильное приложение, используя ваш номер телефона!");
+        }
+
+        final var user = userService.findByPhoneNumber(phoneNumber);
         final var code = createSecureCode();
         user.setSecurityCode(passwordEncoder.encode(code));
         user.setSecurityCodeExpirationDate(OffsetDateTime.now().plusMinutes(SECURITY_CODE_EXPIRATION_TIME));
